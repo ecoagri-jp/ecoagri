@@ -231,7 +231,7 @@
     fetch('https://script.google.com/macros/s/AKfycbzcZ0FoypKFvYQHvGyZtnmJLGjPTyj71S9kUXyXMVa_940LEONaN8KyCUS3qghkZaDO/exec', {
       method: 'POST',
       body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' }
+      mode: 'no-cors'
     }).then(function() {
       form.style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
