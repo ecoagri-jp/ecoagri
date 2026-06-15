@@ -223,20 +223,27 @@
     btn.textContent = '送信中...';
     btn.disabled = true;
 
-    var formData = new FormData();
-    formData.append('name', form.querySelector('[name=name]').value);
-    formData.append('email', form.querySelector('[name=email]').value);
-    formData.append('subject', form.querySelector('[name=subject]').value);
-    formData.append('message', form.querySelector('[name=message]').value);
+    // 使用 URL 编码格式构建数据，彻底规避各种跨域导致的丢包和解析失败问题
+    var searchParams = new URLSearchParams();
+    searchParams.append('name', form.querySelector('[name=name]').value);
+    searchParams.append('email', form.querySelector('[name=email]').value);
+    searchParams.append('subject', form.querySelector('[name=subject]').value);
+    searchParams.append('message', form.querySelector('[name=message]').value);
 
-    fetch('https://script.google.com/macros/s/AKfycbxJlOCaQ4nfrkeWmEztSiB_I2EUfH07vx2C3yOfcidkB069w-2tyU1LjC4pFWhHuxaK/exec', {
+    // 填入你刚刚发布得到的最新 URL 网址
+    fetch('https://script.google.com/macros/library/d/18OJ1TbPVO3QKfqcFuL9Px3na1ugPDsf9PwfNW2jR797d2O8x99u4EcVq/7', {
       method: 'POST',
-      mode: 'no-cors',
-      body: formData
-    }).then(function() {
+      body: searchParams,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(function(response) {
+      // 只要发成功了，就切换显示
       form.style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
-    }).catch(function() {
+    })
+    .catch(function(error) {
       btn.textContent = '送信する →';
       btn.disabled = false;
       alert('送信に失敗しました。もう一度お試しください。');
