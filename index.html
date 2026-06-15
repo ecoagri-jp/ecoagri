@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エコアグリ合同会社 | スマート農業・農産物・食品事業</title>
+<meta name="description" content="エコアグリ合同会社は、スマート農業技術の導入支援から農産物の生産・販売、食品EC、農業体験まで幅広く展開する農業総合企業です。">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep:   #1a3d2b;
+    --green-mid:    #2d6a4f;
+    --green-light:  #52b788;
+    --earth:        #8b6914;
+    --cream:        #f8f5ee;
+    --white:        #ffffff;
+    --text-dark:    #1c1c1c;
+    --text-mid:     #4a4a4a;
+    --text-light:   #7a7a7a;
+    --border:       #ddd8cc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,61,43,0.96);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--white); letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.82); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--green-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--green-deep) 0%, #0f2a1c 60%, #1a3d2b 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 120px 40px 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(82,183,136,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(139,105,20,0.10) 0%, transparent 40%);
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: 800px; text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(82,183,136,0.18);
+    border: 1px solid rgba(82,183,136,0.4);
+    color: var(--green-light);
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+    padding: 6px 18px; border-radius: 20px; margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700; color: var(--white);
+    line-height: 1.3; margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .hero h1 span { color: var(--green-light); }
+  .hero p {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: rgba(255,255,255,0.72);
+    max-width: 560px; margin: 0 auto 40px;
+    font-weight: 300;
+  }
+  .hero-cta {
+    display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+  }
+  .btn-primary {
+    background: var(--green-light); color: var(--green-deep);
+    padding: 14px 36px; border-radius: 4px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em;
+    text-decoration: none; transition: all .2s;
+  }
+  .btn-primary:hover { background: #3da876; transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.4); color: var(--white);
+    padding: 14px 36px; border-radius: 4px;
+    font-weight: 500; font-size: 0.9rem; letter-spacing: 0.06em;
+    text-decoration: none; transition: all .2s;
+  }
+  .btn-outline:hover { border-color: var(--green-light); color: var(--green-light); }
+
+  /* ── SECTION BASE ── */
+  section { padding: 96px 40px; }
+  .section-inner { max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--green-mid); text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700; color: var(--green-deep);
+    line-height: 1.35; margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--text-mid);
+    max-width: 600px; font-weight: 300;
+    margin-bottom: 56px;
+  }
+  hr.divider {
+    border: none; border-top: 1.5px solid var(--border);
+    margin: 0 0 56px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; align-items: start;
+  }
+  .about-text p { color: var(--text-mid); margin-bottom: 20px; font-weight: 300; }
+  .about-facts { display: flex; flex-direction: column; gap: 20px; }
+  .fact {
+    border-left: 3px solid var(--green-light);
+    padding: 14px 20px;
+    background: var(--cream);
+    border-radius: 0 6px 6px 0;
+  }
+  .fact-label { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .fact-value { font-size: 1rem; font-weight: 700; color: var(--green-deep); }
+
+  /* ── SERVICES ── */
+  #services { background: var(--cream); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 32px 28px;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .service-card:hover {
+    box-shadow: 0 8px 32px rgba(26,61,43,0.10);
+    transform: translateY(-3px);
+  }
+  .service-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--green-mid), var(--green-light));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 20px;
+  }
+  .service-card h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--green-deep); margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 0.88rem; color: var(--text-mid);
+    font-weight: 300; line-height: 1.7;
+  }
+
+  /* ── VISION ── */
+  #vision {
+    background: linear-gradient(135deg, var(--green-deep) 0%, #0f2a1c 100%);
+    color: var(--white);
+  }
+  #vision .section-title { color: var(--white); }
+  #vision .section-sub { color: rgba(255,255,255,0.65); }
+  #vision .section-label { color: var(--green-light); }
+  .vision-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .vision-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 32px 24px;
+  }
+  .vision-num {
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--green-light); line-height: 1;
+    margin-bottom: 14px; font-family: 'Noto Serif JP', serif;
+  }
+  .vision-card h3 { color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+  .vision-card p { color: rgba(255,255,255,0.62); font-size: 0.87rem; font-weight: 300; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+  .contact-row { display: flex; flex-direction: column; gap: 4px; }
+  .contact-row dt { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-light); }
+  .contact-row dd { font-size: 0.97rem; color: var(--text-dark); font-weight: 500; }
+  .contact-form-area {
+    background: var(--cream); border-radius: 10px;
+    padding: 36px; border: 1px solid var(--border);
+  }
+  .contact-form-area h3 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--green-deep);
+    margin-bottom: 24px;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 0.82rem; color: var(--text-mid); margin-bottom: 6px; }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 6px; padding: 10px 14px;
+    font-size: 0.9rem; font-family: 'Noto Sans JP', sans-serif;
+    background: var(--white); color: var(--text-dark);
+    transition: border-color .2s;
+    resize: vertical;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--green-light);
+  }
+  .form-submit {
+    width: 100%; padding: 13px;
+    background: var(--green-mid); color: var(--white);
+    border: none; border-radius: 6px;
+    font-size: 0.9rem; font-weight: 700;
+    cursor: pointer; transition: background .2s;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.06em; margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--green-deep); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-deep);
+    color: rgba(255,255,255,0.55);
+    padding: 40px;
+    text-align: center; font-size: 0.82rem;
+  }
+  footer strong { color: rgba(255,255,255,0.85); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .vision-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">🌿 エコアグリ合同会社</a>
+  <ul class="nav-links">
+    <li><a href="#about">会社概要</a></li>
+    <li><a href="#services">事業内容</a></li>
+    <li><a href="#vision">ビジョン</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">🌾 SMART AGRICULTURE × ECO INNOVATION</div>
+    <h1>農業の未来を、<br><span>テクノロジーと共に</span>創る。</h1>
+    <p>エコアグリ合同会社は、スマート農業技術の導入支援から農産物の生産・販売・輸出入、農業体験事業まで幅広く展開する農業総合企業です。</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary">事業内容を見る</a>
+      <a href="#contact" class="btn-outline">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">ABOUT US</div>
+    <h2 class="section-title">会社概要</h2>
+    <hr class="divider">
+    <div class="about-grid">
+      <div class="about-text">
+        <p>エコアグリ合同会社は、「農業×テクノロジー×環境」をキーワードに、持続可能な農業の実現と食の豊かさの追求を目的として設立された会社です。</p>
+        <p>ドローン・AI・IoT等のスマート農業技術の導入支援を軸としながら、農産物・食品の生産・加工・販売、農業体験施設の運営、そして海外への農業資材・機械の輸出入まで、農業バリューチェーン全体をカバーします。</p>
+        <p>私たちは、最先端技術と豊かな自然を融合させ、地域農業の活性化と日本農業の国際競争力向上に貢献してまいります。</p>
+      </div>
+      <div class="about-facts">
+        <div class="fact">
+          <div class="fact-label">商号</div>
+          <div class="fact-value">エコアグリ合同会社</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">代表社員</div>
+          <div class="fact-value">WU SHAOHUA（呉紹華）</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">本店所在地</div>
+          <div class="fact-value">〒615-0021<br>京都府京都市右京区西院安町89番地7<br>パラドール西院パートⅠ 508</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">資本金</div>
+          <div class="fact-value">金999万円</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">事業年度</div>
+          <div class="fact-value">1月1日 〜 12月31日</div>
+        </div>
+        <div class="fact">
+          <div class="fact-label">設立</div>
+          <div class="fact-value">2026年1月</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">BUSINESS</div>
+    <h2 class="section-title">事業内容</h2>
+    <p class="section-sub">農業の可能性を多角的に開拓し、生産から消費・体験まで一貫したサービスを提供します。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>スマート農業技術支援</h3>
+        <p>ドローン・AI・IoTを活用した農業の自動化・効率化を支援。導入コンサルティングから機器の販売・メンテナンスまで対応します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌾</div>
+        <h3>農作物の生産・加工・販売</h3>
+        <p>安全・安心な農産物の生産から加工・直売所運営、ECサイトを通じた全国販売まで一貫して手がけます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍽️</div>
+        <h3>飲食店・食品事業</h3>
+        <p>自社農産物を活かしたレストラン・カフェの企画・運営、食品の製造・加工・販売を展開します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌍</div>
+        <h3>農業資材・機械の輸出入</h3>
+        <p>高品質な農業資材・機械・関連製品の輸出入・販売。国内外の農業ニーズに対応した最適な製品を提供します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏡</div>
+        <h3>農業体験・宿泊・観光</h3>
+        <p>農業体験施設の運営、農園併設型宿泊施設の経営、観光客向けのアグリツーリズムを企画・運営します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛒</div>
+        <h3>農産物ECサイト運営</h3>
+        <p>農産物・食品に特化したECサイトの企画・運営。生産者と消費者を直接結ぶオンラインプラットフォームを提供します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="section-inner">
+    <div class="section-label">VISION</div>
+    <h2 class="section-title">私たちのビジョン</h2>
+    <p class="section-sub">テクノロジーと自然の調和で、持続可能な農業の未来を切り拓きます。</p>
+    <div class="vision-cards">
+      <div class="vision-card">
+        <div class="vision-num">01</div>
+        <h3>スマート農業の普及</h3>
+        <p>最新のAI・IoT・ドローン技術を農業現場に届け、労働力不足や生産性の課題を解決します。</p>
+      </div>
+      <div class="vision-card">
+        <div class="vision-num">02</div>
+        <h3>農業の国際展開</h3>
+        <p>日本の高品質農業技術・農産物を海外へ展開し、農業の国際競争力を高めます。</p>
+      </div>
+      <div class="vision-card">
+        <div class="vision-num">03</div>
+        <h3>農業体験で地域活性化</h3>
+        <p>農業体験・観光・宿泊を組み合わせたアグリツーリズムで地域経済の活性化に貢献します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">CONTACT</div>
+    <h2 class="section-title">お問い合わせ</h2>
+    <hr class="divider">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p style="color:var(--text-mid);font-weight:300;margin-bottom:16px;">
+          事業に関するご質問・ご相談、お取引のご依頼など、お気軽にお問い合わせください。
+        </p>
+        <dl style="display:flex;flex-direction:column;gap:20px;">
+          <div class="contact-row">
+            <dt>会社名</dt>
+            <dd>エコアグリ合同会社</dd>
+          </div>
+          <div class="contact-row">
+            <dt>代表者</dt>
+            <dd>WU SHAOHUA（呉紹華）</dd>
+          </div>
+          <div class="contact-row">
+            <dt>所在地</dt>
+            <dd>〒615-0021<br>京都府京都市右京区西院安町89番地7<br>パラドール西院パートⅠ 508</dd>
+          </div>
+          <div class="contact-row">
+            <dt>メールアドレス</dt>
+            <dd>info@ecoagri.co.jp（例）</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="contact-form-area">
+        <h3>📩 お問い合わせフォーム</h3>
+        <div class="form-group">
+          <label>お名前</label>
+          <input type="text" placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+          <input type="email" placeholder="example@mail.com">
+        </div>
+        <div class="form-group">
+          <label>件名</label>
+          <input type="text" placeholder="お問い合わせ内容の件名">
+        </div>
+        <div class="form-group">
+          <label>メッセージ</label>
+          <textarea rows="4" placeholder="お問い合わせ内容をご記入ください。"></textarea>
+        </div>
+        <button class="form-submit">送信する →</button>
+        <p style="font-size:0.78rem;color:var(--text-light);margin-top:12px;">
+          ※ フォームは現在デモ表示です。実際のお問い合わせはメールにてお願いします。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>エコアグリ合同会社</strong></p>
+  <p style="margin-top:8px;">〒615-0021 京都府京都市右京区西院安町89番地7 パラドール西院パートⅠ 508</p>
+  <p style="margin-top:12px;">© 2026 EcoAgri LLC. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
