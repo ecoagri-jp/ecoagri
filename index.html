@@ -222,16 +222,17 @@
     var btn = form.querySelector('.form-submit');
     btn.textContent = '送信中...';
     btn.disabled = true;
-    var data = {
-      name: form.querySelector('[name=name]').value,
-      email: form.querySelector('[name=email]').value,
-      subject: form.querySelector('[name=subject]').value,
-      message: form.querySelector('[name=message]').value
-    };
-    fetch('https://script.google.com/macros/s/AKfycbxqlSXqFIjxSv2Epyx9BDRg9IormFpteb8HHVQqkSc9hMj6OVT5zWme5Eg_uwtdynq8/exec', {
+
+    var formData = new FormData();
+    formData.append('name', form.querySelector('[name=name]').value);
+    formData.append('email', form.querySelector('[name=email]').value);
+    formData.append('subject', form.querySelector('[name=subject]').value);
+    formData.append('message', form.querySelector('[name=message]').value);
+
+    fetch('https://script.google.com/macros/s/AKfycbxJlOCaQ4nfrkeWmEztSiB_I2EUfH07vx2C3yOfcidkB069w-2tyU1LjC4pFWhHuxaK/exec', {
       method: 'POST',
-      body: JSON.stringify(data),
-      mode: 'no-cors'
+      mode: 'no-cors',
+      body: formData
     }).then(function() {
       form.style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
